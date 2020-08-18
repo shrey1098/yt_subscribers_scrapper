@@ -13,72 +13,10 @@ for i in (range(len(sheet['Channel_Title']))):
     channel_name = sheet['Channel_Title'][i]
     session = HTMLSession()
     response = session.get(channel_url)
-    response.html.render(sleep=1, timeout= 100000000000000000000)
+    response.html.render(sleep=1, timeout= 100000)
     soup = bs(response.html.html, "html.parser")
     open("video.html", "w", encoding='utf8').write(response.html.html)
     x = soup.find("yt-formatted-string", attrs={"class": "style-scope ytd-c4-tabbed-header-renderer"}).text
     with open('output.csv', 'a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([i, "%s" % channel_name, "%s" % x])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#import gspread
-#
-#g = gspread.service_account()
-#sheet = g.open('Youtube Web Scrapping_V1')
-#
-#for rows in sheet:
-#	print(rows)
-#
-#print(sheet)
-
-
